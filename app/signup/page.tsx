@@ -92,7 +92,7 @@ export default function SignupPage() {
                 </label>
                 <input
                   type="email"
-                  placeholder="you@example.com"
+                  placeholder="Enter Your Email"
                   className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base
                              rounded-xl border border-zinc-300 dark:border-zinc-700
                              bg-transparent outline-none
