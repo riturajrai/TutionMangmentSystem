@@ -123,7 +123,7 @@ export default function Home() {
               Modern all-in-one platform trusted by 180+ coaching centers — manage admissions, fees, exams, attendance & growth from one powerful dashboard.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
+            <div className="mt-10 flex flex-wrap gap-2 justify-center lg:justify-start">
               <button className="px-4 py-4 bg-[rgb(var(--color-primary))] text-white rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition shadow-lg">
                 Start Free Trial
               </button>
