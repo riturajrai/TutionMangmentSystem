@@ -1,116 +1,122 @@
 "use client";
 
 import Image from "next/image";
-import { 
-  Users, 
-  CreditCard, 
-  CalendarCheck, 
-  FileText, 
-  LayoutDashboard, 
+import {
+  Users,
+  CreditCard,
+  CalendarCheck,
+  FileText,
+  Smartphone,
   BarChart3,
-  CheckCircle2,
-  ArrowRight
+  ArrowRight,
 } from "lucide-react";
 
 const MODULES = [
   {
-    title: "Student Management",
-    description: "Complete student profiles, batch wise allocation, performance tracking and communication",
+    title: "Admission & Lead Management",
+    description: "Track inquiries, follow-ups, counselling & convert more admissions with smart CRM",
     icon: Users,
-    color: "text-blue-500",
-    image: "/modules/student-management.png" // Add your real image path
+    color: "text-blue-600",
+    image: "/modules/admission-lead-crm.png",
   },
   {
-    title: "Fee & Payments",
-    description: "Online & offline fee collection, automated reminders, receipts, pending dues tracking",
+    title: "Smart Fee Collection",
+    description: "UPI, cards, auto-reminders (SMS/WhatsApp), instalments, penalties & reconciliation",
     icon: CreditCard,
-    color: "text-green-500",
-    image: "/modules/fee-payments.png"
+    color: "text-emerald-600",
+    image: "/modules/smart-fee-collection.png",
   },
   {
-    title: "Attendance System",
-    description: "Daily biometric/manual attendance, late entry marking, monthly reports & export",
+    title: "Advanced Attendance Pro",
+    description: "Biometric / QR / Selfie attendance, real-time alerts, leave & holiday management",
     icon: CalendarCheck,
-    color: "text-purple-500",
-    image: "/modules/attendance.png"
+    color: "text-violet-600",
+    image: "/modules/advanced-attendance.png",
   },
   {
-    title: "Online Tests & Exams",
-    description: "Create question banks, conduct tests, auto-evaluation, performance analytics",
+    title: "Online + Offline Exams",
+    description: "Question banks, MCQ/subjective tests, auto-marking, rankings & detailed analytics",
     icon: FileText,
-    color: "text-orange-500",
-    image: "/modules/online-tests.png"
+    color: "text-amber-600",
+    image: "/modules/online-offline-exams.png",
   },
   {
-    title: "Admin Dashboard",
-    description: "Role-based access for admin, teachers, accountants & other staff members",
-    icon: LayoutDashboard,
-    color: "text-indigo-500",
-    image: "/modules/admin-dashboard.png"
+    title: "Parent & Student Mobile Portal",
+    description: "App access for fees, attendance, results, homework, notices & live updates",
+    icon: Smartphone,
+    color: "text-cyan-600",
+    image: "/modules/parent-student-app.png",
   },
   {
-    title: "Reports & Analytics",
-    description: "Detailed visual reports, revenue trends, student performance, attendance summary",
+    title: "Growth & Revenue Analytics",
+    description: "Batch performance, revenue trends, teacher efficiency & student retention insights",
     icon: BarChart3,
-    color: "text-teal-500",
-    image: "/modules/reports-analytics.png"
+    color: "text-rose-600",
+    image: "/modules/growth-revenue-analytics.png",
   },
 ];
 
 export default function ModulesPage() {
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-white">
-
-      {/* Header / Hero Section */}
-      <section className="relative py-16 sm:py-24 px-5 sm:px-8 bg-gradient-to-br from-[rgb(var(--color-primary)/0.07)] to-transparent">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-            Powerful Modules Built for
-            <span className="text-[rgb(var(--color-primary))]"> Coaching Institutes</span>
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100">
+      {/* Hero / Header */}
+      <section className="pt-16 pb-20 px-5 sm:px-8 md:px-12 text-center">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            Powerful Modules Designed for
+            <span className="block mt-2 text-[rgb(var(--color-primary))]">
+              Modern Coaching Classes
+            </span>
           </h1>
-          
-          <p className="mt-5 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
-            Everything you need to manage your institute efficiently — from student admission to revenue tracking
+
+          <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+            Complete solution trusted by 1000+ institutes — from first inquiry to revenue growth
           </p>
         </div>
       </section>
 
-      {/* Main Modules Grid */}
-      <section className="py-12 sm:py-20 px-5 sm:px-8">
+      {/* Modules Grid */}
+      <section className="py-16 md:py-24 px-5 sm:px-8 md:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {MODULES.map((module, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-zinc-900/70 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 hover:border-[rgb(var(--color-primary)/0.4)] hover:shadow-xl transition-all duration-300 flex flex-col h-full"
-              >
-                {/* Image area */}
-                <div className="relative h-48 sm:h-56 bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-950 dark:to-zinc-900">
-                  <Image
-                    src={module.image}
-                    alt={module.title}
-                    fill
-                    className="object-contain p-6 sm:p-8 group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
+                className="bg-white dark:bg-zinc-900/70 rounded-2xl overflow-hidden border border-zinc-200/70 dark:border-zinc-800/50 hover:border-[rgb(var(--color-primary)/0.4)] hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+              >{/* Image Container - Clean & Centered */}
+<div className="relative h-48 sm:h-56 md:h-64 bg-zinc-100 dark:bg-zinc-900 overflow-hidden">
+  <Image
+    src={module.image}
+    alt={module.title}
+    fill
+    className="object-cover"
+    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+    quality={85}
+  />
+</div>
 
                 {/* Content */}
-                <div className="p-6 sm:p-8 flex flex-col flex-grow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-12 h-12 rounded-xl ${module.color.replace('text-', 'bg-').replace('-500', '/10')} flex items-center justify-center`}>
-                      <module.icon size={24} className={module.color} />
+                <div className="p-6 sm:p-7 md:p-8 flex flex-col flex-grow">
+                  <div className="flex items-center gap-4 mb-5">
+                    <div
+                      className={`w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center ${module.color.replace(
+                        "text-",
+                        "bg-"
+                      )}/10`}
+                    >
+                      <module.icon size={26} className={module.color} />
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-bold">
+                    <h3 className="text-xl md:text-2xl font-bold leading-tight">
                       {module.title}
                     </h3>
                   </div>
 
-                  <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mb-6 flex-grow">
+                  <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mb-6 flex-grow leading-relaxed">
                     {module.description}
                   </p>
 
-                  <div className="flex items-center gap-2 text-[rgb(var(--color-primary))] font-medium text-sm sm:text-base group-hover:translate-x-1 transition-transform">
-                    <span>Learn more</span>
+                  <div className="flex items-center gap-2 text-[rgb(var(--color-primary))] font-medium">
+                    <span>Explore Module</span>
                     <ArrowRight size={16} />
                   </div>
                 </div>
@@ -120,20 +126,25 @@ export default function ModulesPage() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-16 sm:py-24 bg-[rgb(var(--color-primary))] text-white text-center px-5 sm:px-8">
+      {/* Final CTA */}
+      <section className="py-20 md:py-28 px-5 sm:px-8 bg-gradient-to-br from-[rgb(var(--color-primary))] to-[rgb(var(--color-primary)/0.9)] text-white text-center">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-            Ready to Experience All Modules?
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
+            Ready to Run Your Institute Smarter?
           </h2>
-          
-          <p className="text-base sm:text-lg opacity-90 mb-10">
-            Start your free trial today — no credit card required
+
+          <p className="text-lg sm:text-xl opacity-95 mb-10 max-w-3xl mx-auto">
+            Join thousands of successful coaching centers — start your free trial today, no card needed
           </p>
 
-          <button className="px-10 sm:px-12 py-4 bg-white text-[rgb(var(--color-primary))] rounded-xl font-bold text-lg hover:bg-zinc-100 transition shadow-lg">
-            Start Free Trial Now →
-          </button>
+          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+            <button className="px-10 md:px-12 py-4 bg-white text-[rgb(var(--color-primary))] rounded-2xl font-bold text-lg shadow-xl hover:bg-zinc-100 transition-colors">
+              Start Free Trial Now →
+            </button>
+            <button className="px-10 md:px-12 py-4 border-2 border-white/70 rounded-2xl font-semibold text-lg hover:bg-white/10 transition-colors">
+              Book Free Demo Call
+            </button>
+          </div>
         </div>
       </section>
     </div>

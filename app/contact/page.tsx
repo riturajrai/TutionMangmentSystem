@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Send, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  Send,
   CheckCircle2,
-  Loader2
+  Loader2,
+  Building2,
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -18,13 +19,13 @@ export default function ContactPage() {
     email: "",
     phone: "",
     subject: "",
-    message: ""
+    message: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -32,139 +33,129 @@ export default function ContactPage() {
     e.preventDefault();
     setFormStatus("loading");
 
-    // Simulate API call (replace with your actual form submission logic)
+    // Replace with your actual form submission (Formspree, EmailJS, API route, etc.)
     setTimeout(() => {
-      // For demo - randomly success/error (replace with real backend)
-      if (Math.random() > 0.2) {
+      // Demo random success/error
+      if (Math.random() > 0.15) {
         setFormStatus("success");
         setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       } else {
         setFormStatus("error");
       }
-    }, 1500);
+    }, 1800);
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-white">
-
-      {/* Hero Section */}
-      <section className="relative py-16 sm:py-24 px-5 sm:px-8 bg-gradient-to-br from-[rgb(var(--color-primary)/0.08)] via-transparent to-transparent">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-            Get in Touch with Ediyo Team
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100">
+      {/* Hero */}
+      <section className="pt-16 pb-20 px-5 sm:px-8 md:px-12 text-center bg-gradient-to-br from-[rgb(var(--color-primary)/0.08)] via-transparent to-transparent">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            Let's Connect with
+            <span className="block mt-2 text-[rgb(var(--color-primary))]">
+              Ediyo Team
+            </span>
           </h1>
-          
-          <p className="mt-5 text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
-            Have questions? Want a demo? Need help choosing the right plan?  
-            We're here to help — usually reply within 24 hours!
+
+          <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+            Have questions about our software? Need a personalized demo?  
+            We're here to help — most replies within 4-6 hours during business days!
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-20">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 py-16 md:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-
-          {/* Left - Contact Information */}
-          <div className="space-y-10">
+          {/* LEFT - Contact Info */}
+          <div className="space-y-12">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-6">Contact Information</h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[rgb(var(--color-primary)/0.1)] flex items-center justify-center flex-shrink-0">
-                    <Phone size={22} className="text-[rgb(var(--color-primary))]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Phone</h3>
-                    <p className="text-zinc-600 dark:text-zinc-400">+91 98765 43210</p>
-                    <p className="text-sm text-zinc-500">(Mon-Sat, 10 AM - 7 PM)</p>
-                  </div>
-                </div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-8">Get in Touch</h2>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[rgb(var(--color-primary)/0.1)] flex items-center justify-center flex-shrink-0">
-                    <Mail size={22} className="text-[rgb(var(--color-primary))]" />
+              <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-8">
+                {[
+                  {
+                    icon: Phone,
+                    title: "Phone",
+                    content: "+91 98765 43210",
+                    sub: "Mon-Sat, 10 AM - 7 PM IST",
+                  },
+                  {
+                    icon: Mail,
+                    title: "Email",
+                    content: "support@ediyo.in",
+                    sub: "sales@ediyo.in (for business & demo)",
+                  },
+                  {
+                    icon: Building2,
+                    title: "Office",
+                    content: "Ediyo Technologies Pvt Ltd",
+                    sub: "304, Tech Hub Building, Sector 62, Noida, Uttar Pradesh 201309",
+                  },
+                  {
+                    icon: Clock,
+                    title: "Working Hours",
+                    content: "Monday - Saturday",
+                    sub: "10:00 AM - 7:00 PM IST (Sunday Closed)",
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-[rgb(var(--color-primary)/0.1)] flex items-center justify-center flex-shrink-0">
+                      <item.icon size={24} className="text-[rgb(var(--color-primary))]" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg md:text-xl">{item.title}</h3>
+                      <p className="text-zinc-600 dark:text-zinc-400 mt-1">{item.content}</p>
+                      <p className="text-sm text-zinc-500 dark:text-zinc-500 mt-0.5">{item.sub}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Email</h3>
-                    <p className="text-zinc-600 dark:text-zinc-400">support@ediyo.in</p>
-                    <p className="text-zinc-600 dark:text-zinc-400">sales@ediyo.in (for business inquiries)</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[rgb(var(--color-primary)/0.1)] flex items-center justify-center flex-shrink-0">
-                    <MapPin size={22} className="text-[rgb(var(--color-primary))]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Office Address</h3>
-                    <p className="text-zinc-600 dark:text-zinc-400">
-                      Ediyo Technologies Pvt Ltd<br />
-                      304, Tech Hub Building,<br />
-                      Sector 62, Noida, Uttar Pradesh 201309
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[rgb(var(--color-primary)/0.1)] flex items-center justify-center flex-shrink-0">
-                    <Clock size={22} className="text-[rgb(var(--color-primary))]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Working Hours</h3>
-                    <p className="text-zinc-600 dark:text-zinc-400">
-                      Monday - Saturday: 10:00 AM - 7:00 PM<br />
-                      Sunday: Closed
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Quick Response Promise */}
-            <div className="bg-white dark:bg-zinc-900/70 p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+            {/* Trust Box */}
+            <div className="bg-white dark:bg-zinc-900/60 p-6 md:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800">
               <div className="flex items-center gap-3 mb-4">
-                <CheckCircle2 size={24} className="text-green-500" />
-                <h3 className="text-xl font-semibold">Quick Response Promise</h3>
+                <CheckCircle2 size={24} className="text-emerald-500" />
+                <h3 className="text-xl font-semibold">Fast Response Guarantee</h3>
               </div>
-              <p className="text-zinc-600 dark:text-zinc-400">
-                We aim to reply to all inquiries within <strong>4-6 hours</strong> during business hours.
-                For urgent matters, please call us directly.
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                We usually respond to all messages within <strong>4-6 hours</strong> during business hours.  
+                For urgent issues, please call us directly.
               </p>
             </div>
           </div>
 
-          {/* Right - Contact Form */}
-          <div className="bg-white dark:bg-zinc-900/70 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-2">Send us a Message</h2>
+          {/* RIGHT - Form */}
+          <div className="bg-white dark:bg-zinc-900/70 backdrop-blur-sm p-6 sm:p-8 md:p-10 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Send Message</h2>
             <p className="text-zinc-600 dark:text-zinc-400 mb-8">
-              Fill the form below and we'll get back to you as soon as possible
+              Fill the form below and we'll get back to you quickly
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Full Name</label>
+                  <label className="block text-sm font-medium mb-2">Full Name *</label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:border-transparent outline-none transition"
-                    placeholder="Your name"
+                    className="w-full px-4 py-3.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-[rgb(var(--color-primary))/0.5] focus:border-transparent outline-none transition"
+                    placeholder="Your full name"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Email Address</label>
+                  <label className="block text-sm font-medium mb-2">Email Address *</label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:border-transparent outline-none transition"
+                    className="w-full px-4 py-3.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-[rgb(var(--color-primary))/0.5] focus:border-transparent outline-none transition"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -177,45 +168,45 @@ export default function ContactPage() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-[rgb(var(--color-primary))/0.5] focus:border-transparent outline-none transition"
                   placeholder="+91 98765 43210"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Subject</label>
+                <label className="block text-sm font-medium mb-2">Subject *</label>
                 <input
                   type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:border-transparent outline-none transition"
-                  placeholder="Demo request / Support / Other"
+                  className="w-full px-4 py-3.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-[rgb(var(--color-primary))/0.5] focus:border-transparent outline-none transition"
+                  placeholder="Demo Request / Support / Partnership / Other"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Message</label>
+                <label className="block text-sm font-medium mb-2">Your Message *</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:border-transparent outline-none transition resize-none"
-                  placeholder="How can we help you today?"
+                  className="w-full px-4 py-3.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-[rgb(var(--color-primary))/0.5] focus:border-transparent outline-none transition resize-none"
+                  placeholder="Tell us how we can help you..."
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={formStatus === "loading"}
-                className={`w-full py-3.5 rounded-xl font-semibold text-white transition flex items-center justify-center gap-2 ${
-                  formStatus === "loading" 
-                    ? "bg-gray-500 cursor-not-allowed" 
-                    : "bg-[rgb(var(--color-primary))] hover:opacity-90"
-                }`}
+                className={`w-full py-4 rounded-xl font-semibold text-base md:text-lg transition-all flex items-center justify-center gap-2 shadow-md ${
+                  formStatus === "loading"
+                    ? "bg-gray-600 cursor-not-allowed"
+                    : "bg-[rgb(var(--color-primary))] hover:bg-[rgb(var(--color-primary)/0.9)]"
+                } text-white`}
               >
                 {formStatus === "loading" ? (
                   <>
@@ -231,14 +222,14 @@ export default function ContactPage() {
               </button>
 
               {formStatus === "success" && (
-                <div className="mt-4 p-4 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-xl text-center">
-                  Thank you! We've received your message and will get back to you soon.
+                <div className="mt-4 p-5 bg-emerald-100/80 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 rounded-xl text-center font-medium">
+                  Thank you! Your message has been sent successfully.
                 </div>
               )}
 
               {formStatus === "error" && (
-                <div className="mt-4 p-4 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 rounded-xl text-center">
-                  Something went wrong. Please try again or call us directly.
+                <div className="mt-4 p-5 bg-red-100/80 dark:bg-red-900/30 text-red-800 dark:text-red-200 rounded-xl text-center font-medium">
+                  Oops! Something went wrong. Please try again or call us directly.
                 </div>
               )}
             </form>
@@ -246,20 +237,26 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Map / Location Section (optional) */}
-      <section className="py-12 sm:py-20 px-5 sm:px-8 bg-zinc-100 dark:bg-zinc-950">
+      {/* Optional Map Section */}
+      <section className="py-16 md:py-24 px-5 sm:px-8 md:px-12 bg-zinc-100 dark:bg-zinc-900/50">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6">
-            Visit Our Office
-          </h2>
-          
-          <p className="text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
-            Come meet us! We're located in the heart of Noida's IT hub.
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">Visit Our Office</h2>
+          <p className="text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+            We're located in the heart of Noida's IT corridor — come say hello!
           </p>
 
-          {/* You can embed Google Maps iframe here */}
-          <div className="bg-zinc-200 dark:bg-zinc-800 h-64 sm:h-96 rounded-2xl flex items-center justify-center">
-            <p className="text-zinc-500">Google Maps Embed (Add your iframe here)</p>
+          {/* Replace with real Google Maps iframe */}
+          <div className="aspect-video bg-zinc-200 dark:bg-zinc-800 rounded-2xl overflow-hidden shadow-xl">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.1234567890123!2d77.378!3d28.623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceff!5e0!3m2!1sen!2sin!4v1698765432100"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ediyo Office Location"
+            />
           </div>
         </div>
       </section>
