@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { motion } from "framer-motion"; // Make sure framer-motion is installed
 import { Check, X, ArrowRight } from "lucide-react";
 
 const PLANS = [
@@ -65,10 +67,20 @@ const PLANS = [
   },
 ];
 
+const ANIMATED_PRICING_TEXTS = [
+  "No hidden fees — ever",
+  "Cancel anytime, no questions asked",
+  "Save up to 20% with yearly billing",
+  "Free trial — no credit card required",
+  "Scales with your institute growth",
+  "Transparent pricing from day one",
+  "Affordable for Indian coaching centers",
+];
+
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100">
-      {/* Header */}
+      {/* Header / Hero */}
       <section className="pt-16 pb-20 px-5 sm:px-8 md:px-12 text-center">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
@@ -78,8 +90,32 @@ export default function PricingPage() {
             </span>
           </h1>
 
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed">
-            Choose the plan that fits your coaching institute size and needs.
+          {/* Infinite animated scrolling text */}
+          <div className="mt-6 overflow-hidden">
+            <div className="relative h-10 sm:h-12">
+              <motion.div
+                className="absolute whitespace-nowrap flex items-center gap-8 text-base sm:text-lg md:text-xl font-medium text-[rgb(var(--color-primary))]"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  duration: 28,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "linear",
+                }}
+              >
+                {/* Duplicate for seamless infinite loop */}
+                {[...ANIMATED_PRICING_TEXTS, ...ANIMATED_PRICING_TEXTS].map((text, i) => (
+                  <span key={i} className="flex items-center gap-3">
+                    <span className="inline-block w-2.5 h-2.5 rounded-full bg-[rgb(var(--color-primary))] animate-pulse" />
+                    {text}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+
+          <p className="mt-8 text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+            Choose the plan that fits your coaching institute size and needs.  
             Upgrade or downgrade anytime — no long-term contracts.
           </p>
         </div>

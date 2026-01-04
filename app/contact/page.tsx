@@ -11,6 +11,7 @@ import {
   Loader2,
   Building2,
 } from "lucide-react";
+import { motion } from "framer-motion"; // ← Make sure framer-motion is installed
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -33,9 +34,8 @@ export default function ContactPage() {
     e.preventDefault();
     setFormStatus("loading");
 
-    // Replace with your actual form submission (Formspree, EmailJS, API route, etc.)
+    // Replace with real form submission logic later
     setTimeout(() => {
-      // Demo random success/error
       if (Math.random() > 0.15) {
         setFormStatus("success");
         setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
@@ -44,6 +44,15 @@ export default function ContactPage() {
       }
     }, 1800);
   };
+
+  const ANIMATED_TEXTS = [
+    "Most replies within 4-6 hours during business days",
+    "Free personalized demo available on request",
+    "Dedicated support for institutes of all sizes",
+    "Get answers to pricing, features & integrations",
+    "Call us directly for urgent help",
+    "We're excited to help your institute grow!",
+  ];
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100">
@@ -57,9 +66,33 @@ export default function ContactPage() {
             </span>
           </h1>
 
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+          {/* Infinite animated scrolling text */}
+          <div className="mt-6 overflow-hidden">
+            <div className="relative h-10 sm:h-12">
+              <motion.div
+                className="absolute whitespace-nowrap flex items-center gap-8 text-base sm:text-lg md:text-xl font-medium text-[rgb(var(--color-primary))]"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  duration: 30,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "linear",
+                }}
+              >
+                {/* Duplicate for seamless loop */}
+                {[...ANIMATED_TEXTS, ...ANIMATED_TEXTS].map((text, i) => (
+                  <span key={i} className="flex items-center gap-3">
+                    <span className="inline-block w-2.5 h-2.5 rounded-full bg-[rgb(var(--color-primary))] animate-pulse" />
+                    {text}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+
+          <p className="mt-8 text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed">
             Have questions about our software? Need a personalized demo?  
-            We're here to help — most replies within 4-6 hours during business days!
+            We're here to help — fast & friendly support!
           </p>
         </div>
       </section>
@@ -237,7 +270,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Optional Map Section */}
+      {/* Map Section */}
       <section className="py-16 md:py-24 px-5 sm:px-8 md:px-12 bg-zinc-100 dark:bg-zinc-900/50">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-6">Visit Our Office</h2>
@@ -245,7 +278,6 @@ export default function ContactPage() {
             We're located in the heart of Noida's IT corridor — come say hello!
           </p>
 
-          {/* Replace with real Google Maps iframe */}
           <div className="aspect-video bg-zinc-200 dark:bg-zinc-800 rounded-2xl overflow-hidden shadow-xl">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.1234567890123!2d77.378!3d28.623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceff!5e0!3m2!1sen!2sin!4v1698765432100"
