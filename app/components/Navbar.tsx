@@ -18,25 +18,25 @@ export default function Navbar() {
         {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           <Link
-            href="#features"
+            href="features"
             className="hover:text-[rgb(var(--color-primary))] transition"
           >
             Features
           </Link>
           <Link
-            href="#modules"
+            href="modules"
             className="hover:text-[rgb(var(--color-primary))] transition"
           >
             Modules
           </Link>
           <Link
-            href="#pricing"
+            href="pricing"
             className="hover:text-[rgb(var(--color-primary))] transition"
           >
             Pricing
           </Link>
           <Link
-            href="#contact"
+            href="contact"
             className="hover:text-[rgb(var(--color-primary))] transition"
           >
             Contact
