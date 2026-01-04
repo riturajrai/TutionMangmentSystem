@@ -55,7 +55,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Text content */}
           <div className="text-center lg:text-left">
-            <h1 className="text-3xl xs:text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+            <h1 className="text-2xl xs:text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
               All-in-One Coaching
               <br className="hidden sm:block" />
               <span className="text-[rgb(var(--color-primary))]">Management Software</span>
@@ -126,9 +126,7 @@ export default function Home() {
                 className="bg-white dark:bg-zinc-900/60 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition text-center"
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-opacity-10 bg-[rgb(var(--color-primary))] flex items-center justify-center mx-auto mb-3">
-                 <stat.icon
-  className={`w-5 h-5 sm:w-6 sm:h-6 ${stat.color}`}
-/>
+                 <stat.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${stat.color}`}/>
                 </div>
                 <p className="text-xs sm:text-sm font-semibold">{stat.value}</p>
               </div>
