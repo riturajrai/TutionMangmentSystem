@@ -1,17 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { 
-  ShieldCheck, 
-  BarChart3, 
-  Users, 
-  TrendingUp, 
-  Building2, 
+import { motion } from "framer-motion";
+import {
+  ShieldCheck,
+  Users,
+  Building2,
   Headphones,
   Rocket,
   Lock,
   Smartphone,
-  IndianRupee
+  IndianRupee,
+  BarChart3,
+  TrendingUp,
 } from "lucide-react";
 
 import FeeMangmentIcon from "../public/HomeIcon/Fee and Paymangment.png";
@@ -22,90 +23,150 @@ import StudentMnagmentIcon from "../public/HomeIcon/StudentMangment.png";
 import ReportAnalticsIcon from "../public/HomeIcon/ReportAndAnalytics.png";
 
 const FEATURES = [
-  { title: "Student Management", desc: "Complete profiles, batch allocation & progress tracking", icon: StudentMnagmentIcon },
-  { title: "Fee & Payments", desc: "Online/offline tracking with automated reminders", icon: FeeMangmentIcon },
-  { title: "Attendance", desc: "Daily tracking + reports & export options", icon: AttendanceIcon },
-  { title: "Online Tests", desc: "Create tests with auto-evaluation & analytics", icon: OnlineTestIcon },
-  { title: "Admin Dashboard", desc: "Role-based access for admin, teachers & staff", icon: AdminDsboardIcon },
-  { title: "Reports & Analytics", desc: "Clear visual insights on performance & revenue", icon: ReportAnalticsIcon },
+  {
+    title: "Smart Student Lifecycle",
+    desc: "From inquiry to alumni — complete profiles, admissions, batches & progress tracking",
+    icon: StudentMnagmentIcon,
+  },
+  {
+    title: "Automated Fee System",
+    desc: "UPI, cards, auto-reminders (SMS/WhatsApp), instalments & instant receipts",
+    icon: FeeMangmentIcon,
+  },
+  {
+    title: "Advanced Attendance",
+    desc: "Biometric/QR/selfie modes, real-time alerts & monthly defaulter reports",
+    icon: AttendanceIcon,
+  },
+  {
+    title: "Digital Exams Suite",
+    desc: "Online + offline tests, question bank, auto-evaluation & performance analytics",
+    icon: OnlineTestIcon,
+  },
+  {
+    title: "Role-Based Dashboard",
+    desc: "Separate portals for admin, teachers, accountants & parents",
+    icon: AdminDsboardIcon,
+  },
+  {
+    title: "Growth Insights",
+    desc: "Revenue trends, student retention, batch performance & teacher efficiency reports",
+    icon: ReportAnalticsIcon,
+  },
 ];
 
 const TRUST_STATS = [
-  { value: "500+ Students", icon: Users, color: "text-blue-500" },
-  { value: "50+ Institutes", icon: Building2, color: "text-purple-500" },
-  { value: "99.9% Uptime", icon: ShieldCheck, color: "text-green-500" },
-  { value: "24/7 Support", icon: Headphones, color: "text-amber-500" },
+  { value: "12,000+ Students", icon: Users, color: "text-blue-500" },
+  { value: "180+ Coaching Centers", icon: Building2, color: "text-purple-500" },
+  { value: "99.98% Uptime", icon: ShieldCheck, color: "text-green-500" },
+  { value: "365-Day Support", icon: Headphones, color: "text-amber-500" },
 ];
 
 const WHY_US_POINTS = [
-  { text: "Easy & fast onboarding", icon: Rocket },
-  { text: "Bank-grade data security", icon: Lock },
-  { text: "Perfect on mobile & desktop", icon: Smartphone },
-  { text: "Affordable for Indian institutes", icon: IndianRupee },
+  { text: "Ready in 48 hours — super fast setup", icon: Rocket },
+  { text: "256-bit encryption & daily backups", icon: Lock },
+  { text: "Beautiful mobile app for parents & teachers", icon: Smartphone },
+  { text: "Most affordable premium plan in India", icon: IndianRupee },
+];
+
+const SCROLL_TEXTS = [
+  "Save 15+ hours per week on admin work",
+  "Increase attendance by 25%+ with smart reminders",
+  "Reduce fee defaulters to almost zero",
+  "Get real-time insights & rankings instantly",
+  "Parents love the mobile app experience",
+  "Fully secure & 99.98% uptime guaranteed",
+  "Trusted by 180+ coaching centers across India",
 ];
 
 export default function Home() {
   return (
-    <div className="bg-zinc-50 text-zinc-900 dark:bg-black dark:text-white min-h-screen">
-
+    <div className="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen">
       {/* ================= HERO ================= */}
-      <section className="relative pt-14 pb-20 sm:pt-20 sm:pb-32 px-4 sm:px-6 lg:px-12 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--color-primary)/0.06)] via-transparent to-[rgb(var(--color-primary)/0.1)]" />
+      <section className="relative pt-16 pb-20 sm:pt-24 sm:pb-32 px-5 sm:px-8 lg:px-12 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--color-primary)/0.07)] via-transparent to-[rgb(var(--color-primary)/0.12)]" />
 
-        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text content */}
           <div className="text-center lg:text-left">
-            <h1 className="text-2xl xs:text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-              All-in-One Coaching
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+              Grow Your Coaching Institute
               <br className="hidden sm:block" />
-              <span className="text-[rgb(var(--color-primary))]">Management Software</span>
+              <span className="text-[rgb(var(--color-primary))]">Effortlessly</span>
             </h1>
 
-            <p className="mt-5 text-sm xs:text-[11px] sm:text-base md:text-lg text-zinc-600 dark:text-zinc-400 max-w-lg mx-auto lg:mx-0">
-              Manage students, fees, attendance, online tests and reports — all from one modern, secure dashboard.
+            {/* Infinite scrolling benefits animation */}
+            <div className="mt-6 overflow-hidden">
+              <div className="relative h-10 sm:h-12">
+                <motion.div
+                  className="absolute whitespace-nowrap flex items-center gap-8 text-base sm:text-lg md:text-xl font-medium text-[rgb(var(--color-primary))]"
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{
+                    duration: 28,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    ease: "linear",
+                  }}
+                >
+                  {/* Duplicate for seamless infinite loop */}
+                  {[...SCROLL_TEXTS, ...SCROLL_TEXTS].map((text, i) => (
+                    <span key={i} className="flex items-center gap-3">
+                      <span className="inline-block w-2.5 h-2.5 rounded-full bg-[rgb(var(--color-primary))] animate-pulse" />
+                      {text}
+                    </span>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
+
+            <p className="mt-8 text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Modern all-in-one platform trusted by 180+ coaching centers — manage admissions, fees, exams, attendance & growth from one powerful dashboard.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start">
-              <button className="px-6 py-3 xs:px-5 xs:py-2.5 bg-[rgb(var(--color-primary))] text-white rounded-xl font-medium text-sm sm:text-base hover:opacity-90 transition shadow-md">
-                Get Started Free
+            <div className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
+              <button className="px-8 py-4 bg-[rgb(var(--color-primary))] text-white rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition shadow-lg">
+                Start Free Trial
               </button>
-              <button className="px-6 py-3 xs:px-5 xs:py-2.5 border border-zinc-300 dark:border-zinc-700 rounded-xl font-medium text-sm sm:text-base hover:border-zinc-400 transition">
-                Book Demo
+              <button className="px-8 py-4 border-2 border-zinc-300 dark:border-zinc-700 rounded-xl font-semibold text-base sm:text-lg hover:border-zinc-400 dark:hover:border-zinc-500 transition">
+                Book Live Demo
               </button>
             </div>
           </div>
 
           {/* Dashboard visual */}
-          <div className="relative mt-10 lg:mt-0 scale-95 sm:scale-100">
-            <div className="absolute -inset-6 sm:-inset-10 bg-[rgb(var(--color-primary)/0.1)] blur-2xl sm:blur-3xl rounded-full opacity-60" />
+          <div className="relative mt-12 lg:mt-0">
+            <div className="absolute -inset-8 sm:-inset-12 bg-[rgb(var(--color-primary)/0.12)] blur-3xl rounded-full opacity-60" />
 
-            <div className="relative rounded-2xl sm:rounded-3xl p-3 sm:p-5 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm">
-              {/* Live Preview Badge */}
-              <div className="absolute -top-4 sm:-top-5 left-3 sm:left-6 flex items-center gap-2 bg-white dark:bg-zinc-900 px-3 py-1.5 rounded-full shadow-md text-[10px] sm:text-xs font-semibold z-10">
-                <BarChart3 size={14} className="text-[rgb(var(--color-primary))]" />
-                Live Preview
+            <div className="relative rounded-3xl p-4 sm:p-6 bg-gradient-to-b from-white/10 to-transparent backdrop-blur-md border border-zinc-200/40 dark:border-zinc-800/40">
+              <div className="absolute -top-5 sm:-top-6 left-4 sm:left-8 flex items-center gap-2 bg-white dark:bg-zinc-900 px-4 py-2 rounded-full shadow-lg text-xs sm:text-sm font-semibold z-10">
+                <BarChart3 size={16} className="text-[rgb(var(--color-primary))]" />
+                Live Dashboard Preview
               </div>
 
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-xl border border-zinc-200/40 dark:border-zinc-800/40">
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/new-hero-image.png"
-                  alt="Dashboard Preview"
+                  alt="Ediyo Dashboard Preview"
                   width={960}
                   height={640}
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-cover"
                   priority
                 />
               </div>
 
-              {/* Floating stats - smaller & better positioned on mobile */}
-              <div className="absolute -bottom-4 sm:-bottom-6 left-2 sm:left-5 flex items-center gap-1.5 bg-white dark:bg-zinc-900 px-2.5 sm:px-3.5 py-1 sm:py-2 rounded-lg shadow-md text-[9px] xs:text-[10px] sm:text-xs font-medium whitespace-nowrap">
-                <Users size={14} className="text-emerald-500" />
-                90% Attendance
+              {/* Floating badges */}
+              <div className="absolute -bottom-5 sm:-bottom-7 left-4 sm:left-8 bg-white dark:bg-zinc-900 px-3 py-2 rounded-lg shadow-lg text-xs sm:text-sm font-medium">
+                <div className="flex items-center gap-2">
+                  <Users size={16} className="text-emerald-500" />
+                  96% Attendance
+                </div>
               </div>
 
-              <div className="absolute top-8 sm:top-16 -right-1 sm:-right-5 flex items-center gap-1.5 bg-white dark:bg-zinc-900 px-2.5 sm:px-3.5 py-1 sm:py-2 rounded-lg shadow-md text-[9px] xs:text-[10px] sm:text-xs font-medium whitespace-nowrap">
-                <TrendingUp size={14} className="text-emerald-500" />
-                +8% Growth
+              <div className="absolute top-10 sm:top-16 -right-2 sm:-right-6 bg-white dark:bg-zinc-900 px-3 py-2 rounded-lg shadow-lg text-xs sm:text-sm font-medium">
+                <div className="flex items-center gap-2">
+                  <TrendingUp size={16} className="text-emerald-500" />
+                  +24% Revenue Growth
+                </div>
               </div>
             </div>
           </div>
@@ -114,21 +175,21 @@ export default function Home() {
 
       {/* ================= TRUST ================= */}
       <section className="py-12 sm:py-16 border-t border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-xs sm:text-sm uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            Trusted by growing coaching institutes
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 text-center">
+          <p className="text-xs sm:text-sm uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-8">
+            Trusted across India
           </p>
 
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-8">
             {TRUST_STATS.map((stat, i) => (
               <div
                 key={i}
-                className="bg-white dark:bg-zinc-900/60 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition text-center"
+                className="bg-white dark:bg-zinc-900/60 p-5 sm:p-7 rounded-2xl shadow-sm hover:shadow-md transition"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-opacity-10 bg-[rgb(var(--color-primary))] flex items-center justify-center mx-auto mb-3">
-                 <stat.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${stat.color}`}/>
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[rgb(var(--color-primary)/0.1)] flex items-center justify-center mx-auto mb-4">
+                  <stat.icon className={`w-6 h-6 sm:w-7 sm:h-7 ${stat.color}`} />
                 </div>
-                <p className="text-xs sm:text-sm font-semibold">{stat.value}</p>
+                <p className="text-base sm:text-lg font-bold">{stat.value}</p>
               </div>
             ))}
           </div>
@@ -136,33 +197,33 @@ export default function Home() {
       </section>
 
       {/* ================= FEATURES ================= */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6">
+      <section className="py-16 sm:py-24 px-5 sm:px-8 md:px-12">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 sm:mb-6">
-            Everything you need to grow
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-5">
+            Everything Your Institute Needs
           </h2>
-          
-          <p className="text-sm sm:text-base text-center text-zinc-600 dark:text-zinc-400 mb-10 sm:mb-14 max-w-2xl mx-auto">
-            Modern tools built for Indian coaching institutes
+
+          <p className="text-base sm:text-lg text-center text-zinc-600 dark:text-zinc-400 mb-12 max-w-3xl mx-auto">
+            Powerful tools built specifically for Indian coaching & tuition centers
           </p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7 lg:gap-9">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {FEATURES.map((f, i) => (
               <div
                 key={i}
-                className="group bg-white dark:bg-zinc-900/70 p-5 sm:p-7 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-[rgb(var(--color-primary)/0.3)] transition-all"
+                className="group bg-white dark:bg-zinc-900/70 p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-[rgb(var(--color-primary)/0.4)] transition-all"
               >
-                <div className="w-14 h-14 rounded-xl bg-[rgb(var(--color-primary)/0.08)] flex items-center justify-center mb-4 group-hover:scale-105 transition">
+                <div className="w-16 h-16 rounded-xl  flex items-center justify-center mb-5 group-hover:scale-105 transition">
                   <Image
                     src={f.icon}
                     alt={f.title}
-                    width={56}
-                    height={56}
-                    className="w-9 h-9 sm:w-11 sm:h-11 object-contain"
+                    width={220}
+                    height={220}
+                    className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
                   />
                 </div>
-                <h3 className="text-base sm:text-lg font-semibold mb-2">{f.title}</h3>
-                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">{f.desc}</p>
+                <h3 className="text-lg sm:text-xl font-bold mb-3">{f.title}</h3>
+                <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -170,85 +231,84 @@ export default function Home() {
       </section>
 
       {/* ================= WHY US ================= */}
-      <section className="py-16 sm:py-20 bg-zinc-100 dark:bg-zinc-950 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <section className="py-16 sm:py-24 bg-zinc-100 dark:bg-zinc-900/50 px-5 sm:px-8 md:px-12">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-              Why Institutes Choose Us
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8">
+              Why Coaching Centers Love Ediyo
             </h2>
 
-            <div className="space-y-4 sm:space-y-5">
+            <div className="space-y-6 sm:space-y-8">
               {WHY_US_POINTS.map((item, i) => (
-                <div key={i} className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[rgb(var(--color-primary)/0.08)] flex items-center justify-center flex-shrink-0">
-                    <item.icon size={20} className="text-[rgb(var(--color-primary))]" />
+                <div key={i} className="flex items-center gap-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[rgb(var(--color-primary)/0.1)] flex items-center justify-center flex-shrink-0">
+                    <item.icon size={24} className="text-[rgb(var(--color-primary))]" />
                   </div>
-                  <span className="text-sm sm:text-base">{item.text}</span>
+                  <span className="text-base sm:text-lg font-medium">{item.text}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="relative mt-8 lg:mt-0">
+          <div className="relative mt-10 lg:mt-0">
             <Image
               src="/whycoooshe.png"
-              alt="Institute using software"
-              width={500}
-              height={500}
-              className="w-full max-w-[420px] mx-auto lg:mx-0 rounded-2xl shadow-xl object-contain"
+              alt="Happy coaching institute team using Ediyo"
+              width={600}
+              height={600}
+              className="w-full max-w-[480px] mx-auto lg:mx-0 rounded-3xl shadow-2xl object-contain"
             />
           </div>
         </div>
       </section>
 
-      {/* ================= PRICING & FINAL CTA ================= */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6">
+      {/* ================= PRICING TEASER & FINAL CTA ================= */}
+      <section className="py-16 sm:py-24 px-5 sm:px-8 md:px-12">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-            Simple & Transparent Pricing
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+            Affordable Plans for Every Size
           </h2>
 
-          <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mb-10 max-w-xl mx-auto">
-            Choose the plan that fits your institute — upgrade anytime
+          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 mb-12 max-w-2xl mx-auto">
+            Starting from just ₹999/month — save more with yearly billing
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
             {[
-              { plan: "Starter", price: "₹999", desc: "Small batches" },
+              { plan: "Starter", price: "₹999", desc: "Small batches & new centers" },
               { plan: "Professional", price: "₹2,499", desc: "Growing institutes" },
-              { plan: "Enterprise", price: "Custom", desc: "Large scale needs" },
+              { plan: "Enterprise", price: "Custom", desc: "Large chains & multi-branch" },
             ].map((p, i) => (
               <div
                 key={i}
-                className={`p-6 sm:p-8 rounded-2xl border transition-all ${
+                className={`p-7 sm:p-9 rounded-2xl border transition-all ${
                   i === 1
-                    ? "bg-[rgb(var(--color-primary))] text-white scale-105 shadow-xl"
-                    : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 hover:shadow-lg"
+                    ? "bg-[rgb(var(--color-primary))] text-white shadow-2xl scale-100 md:scale-105"
+                    : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
                 }`}
               >
-                <h3 className="text-lg sm:text-xl font-bold">{p.plan}</h3>
-                <p className="text-3xl sm:text-4xl font-extrabold mt-3">
+                <h3 className="text-xl sm:text-2xl font-bold mb-3">{p.plan}</h3>
+                <p className="text-4xl sm:text-5xl font-extrabold">
                   {p.price}
-                  {i !== 2 && <span className="text-lg opacity-80">/mo</span>}
+                  {i !== 2 && <span className="text-xl sm:text-2xl opacity-80">/mo</span>}
                 </p>
-                <p className="mt-4 text-xs sm:text-sm opacity-90">{p.desc}</p>
-                <button className={`mt-6 w-full py-3 rounded-xl font-medium text-sm sm:text-base ${
-                  i === 1 ? "bg-white text-[rgb(var(--color-primary))]" : "bg-[rgb(var(--color-primary))] text-white"
-                }`}>
-                  {i === 2 ? "Contact Us" : "Choose Plan"}
-                </button>
+                <p className="mt-4 text-sm sm:text-base opacity-90">{p.desc}</p>
               </div>
             ))}
           </div>
 
-          {/* Final CTA */}
-          <div className="mt-16 sm:mt-20">
-            <p className="text-lg sm:text-xl font-medium mb-6">
-              Ready to digitize your institute?
+          <div className="mt-12">
+            <p className="text-xl sm:text-2xl font-semibold mb-8">
+              Ready to take your institute to the next level?
             </p>
-            <button className="px-10 py-4 bg-[rgb(var(--color-primary))] text-white rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition shadow-md">
-              Start Free Trial → No Card Needed
-            </button>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+              <button className="px-12 py-5 bg-[rgb(var(--color-primary))] text-white rounded-xl font-bold text-lg shadow-xl hover:opacity-90 transition">
+                Start Your Free Trial → No Card Required
+              </button>
+              <button className="px-12 py-5 border-2 border-zinc-300 dark:border-zinc-700 rounded-xl font-semibold text-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+                Schedule a Personal Demo
+              </button>
+            </div>
           </div>
         </div>
       </section>

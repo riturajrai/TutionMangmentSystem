@@ -160,7 +160,7 @@ export default function FeaturesPage() {
                   >
                     <section.icon size={28} className={section.color} />
                   </div>
-                  <h2 className="text-xl md:text-3xl font-bold leading-tight">
+                  <h2 className="text-xl md:text-2xl font-bold leading-tight">
                     {section.title}
                   </h2>
                 </div>
