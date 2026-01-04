@@ -124,10 +124,10 @@ export default function Home() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
-              <button className="px-8 py-4 bg-[rgb(var(--color-primary))] text-white rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition shadow-lg">
+              <button className="px-4 py-4 bg-[rgb(var(--color-primary))] text-white rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition shadow-lg">
                 Start Free Trial
               </button>
-              <button className="px-8 py-4 border-2 border-zinc-300 dark:border-zinc-700 rounded-xl font-semibold text-base sm:text-lg hover:border-zinc-400 dark:hover:border-zinc-500 transition">
+              <button className="px-4 py-4 border-2 border-zinc-300 dark:border-zinc-700 rounded-xl font-semibold text-base sm:text-lg hover:border-zinc-400 dark:hover:border-zinc-500 transition">
                 Book Live Demo
               </button>
             </div>
