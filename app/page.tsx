@@ -48,7 +48,7 @@ export default function Home() {
       <section className="relative pt-16 pb-20 md:pt-24 md:pb-32 px-5 sm:px-8">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
+            <h1 className="text-xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
               All-in-One Coaching
               <br className="hidden sm:block" />
               <span className="text-[rgb(var(--color-primary))]">
