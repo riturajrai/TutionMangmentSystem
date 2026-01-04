@@ -79,6 +79,12 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800 px-6 py-6 space-y-4">
           <Link
+            href="/"
+            className="hover:text-[rgb(var(--color-primary))] transition"
+          >
+            Home
+          </Link>
+          <Link
             href="#features"
             onClick={() => setOpen(false)}
             className="block hover:text-[rgb(var(--color-primary))]"
